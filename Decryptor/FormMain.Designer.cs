@@ -33,7 +33,7 @@
             this.decryptButton = new System.Windows.Forms.Button();
             this.textButton = new System.Windows.Forms.Button();
             this.doubleButton = new System.Windows.Forms.Button();
-            this.cleanButton = new System.Windows.Forms.Button();
+            this.clearButton = new System.Windows.Forms.Button();
             this.openButton = new System.Windows.Forms.Button();
             this.keyButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -47,19 +47,21 @@
             this.textView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textView.DetectUrls = false;
             this.textView.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textView.Location = new System.Drawing.Point(12, 12);
+            this.textView.Location = new System.Drawing.Point(16, 15);
+            this.textView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textView.Name = "textView";
             this.textView.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.textView.Size = new System.Drawing.Size(640, 566);
+            this.textView.Size = new System.Drawing.Size(853, 697);
             this.textView.TabIndex = 0;
             this.textView.Text = "";
             // 
             // decryptButton
             // 
             this.decryptButton.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.decryptButton.Location = new System.Drawing.Point(415, 588);
+            this.decryptButton.Location = new System.Drawing.Point(553, 724);
+            this.decryptButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.decryptButton.Name = "decryptButton";
-            this.decryptButton.Size = new System.Drawing.Size(75, 57);
+            this.decryptButton.Size = new System.Drawing.Size(100, 70);
             this.decryptButton.TabIndex = 1;
             this.decryptButton.Text = "Decrypt";
             this.decryptButton.UseVisualStyleBackColor = true;
@@ -67,9 +69,10 @@
             // 
             // textButton
             // 
-            this.textButton.Location = new System.Drawing.Point(496, 588);
+            this.textButton.Location = new System.Drawing.Point(661, 724);
+            this.textButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textButton.Name = "textButton";
-            this.textButton.Size = new System.Drawing.Size(75, 56);
+            this.textButton.Size = new System.Drawing.Size(100, 69);
             this.textButton.TabIndex = 4;
             this.textButton.Text = "Text";
             this.textButton.UseVisualStyleBackColor = true;
@@ -77,29 +80,32 @@
             // 
             // doubleButton
             // 
-            this.doubleButton.Location = new System.Drawing.Point(577, 588);
+            this.doubleButton.Location = new System.Drawing.Point(769, 724);
+            this.doubleButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.doubleButton.Name = "doubleButton";
-            this.doubleButton.Size = new System.Drawing.Size(75, 56);
+            this.doubleButton.Size = new System.Drawing.Size(100, 69);
             this.doubleButton.TabIndex = 5;
             this.doubleButton.Text = "Decrypt + Text";
             this.doubleButton.UseVisualStyleBackColor = true;
             this.doubleButton.Click += new System.EventHandler(this.doubleButton_Click);
             // 
-            // cleanButton
+            // clearButton
             // 
-            this.cleanButton.Location = new System.Drawing.Point(334, 588);
-            this.cleanButton.Name = "cleanButton";
-            this.cleanButton.Size = new System.Drawing.Size(75, 56);
-            this.cleanButton.TabIndex = 7;
-            this.cleanButton.Text = "Clean";
-            this.cleanButton.UseVisualStyleBackColor = true;
-            this.cleanButton.Click += new System.EventHandler(this.cleanButton_Click);
+            this.clearButton.Location = new System.Drawing.Point(445, 724);
+            this.clearButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(100, 69);
+            this.clearButton.TabIndex = 7;
+            this.clearButton.Text = "Clear";
+            this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
             // openButton
             // 
-            this.openButton.Location = new System.Drawing.Point(12, 588);
+            this.openButton.Location = new System.Drawing.Point(16, 724);
+            this.openButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.openButton.Name = "openButton";
-            this.openButton.Size = new System.Drawing.Size(75, 56);
+            this.openButton.Size = new System.Drawing.Size(100, 69);
             this.openButton.TabIndex = 8;
             this.openButton.Text = "Open file";
             this.openButton.UseVisualStyleBackColor = true;
@@ -107,9 +113,10 @@
             // 
             // keyButton
             // 
-            this.keyButton.Location = new System.Drawing.Point(93, 588);
+            this.keyButton.Location = new System.Drawing.Point(124, 724);
+            this.keyButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.keyButton.Name = "keyButton";
-            this.keyButton.Size = new System.Drawing.Size(75, 56);
+            this.keyButton.Size = new System.Drawing.Size(100, 69);
             this.keyButton.TabIndex = 9;
             this.keyButton.Text = "Set key";
             this.keyButton.UseVisualStyleBackColor = true;
@@ -117,18 +124,19 @@
             // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(668, 657);
+            this.ClientSize = new System.Drawing.Size(891, 809);
             this.Controls.Add(this.keyButton);
             this.Controls.Add(this.openButton);
-            this.Controls.Add(this.cleanButton);
+            this.Controls.Add(this.clearButton);
             this.Controls.Add(this.doubleButton);
             this.Controls.Add(this.textButton);
             this.Controls.Add(this.textView);
             this.Controls.Add(this.decryptButton);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormMain";
             this.Text = "Duck Decryptor";
             this.ResumeLayout(false);
@@ -141,7 +149,7 @@
         private System.Windows.Forms.Button decryptButton;
         private System.Windows.Forms.Button textButton;
         private System.Windows.Forms.Button doubleButton;
-        private System.Windows.Forms.Button cleanButton;
+        private System.Windows.Forms.Button clearButton;
         private System.Windows.Forms.Button openButton;
         private System.Windows.Forms.Button keyButton;
     }

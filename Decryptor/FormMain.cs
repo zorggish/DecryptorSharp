@@ -20,7 +20,7 @@ namespace Decryptor
             InitializeComponent();
         }
 
-        string GetDecrypted(string text)
+        string getDecrypted(string text)
         {
             /*!
 	            \brief Расшифровка лога
@@ -32,7 +32,7 @@ namespace Decryptor
                 if (line != "ENDBLOCK")
                     try
                     {
-                        output += FromAes256(line) + "\n";
+                        output += fromAes256(line) + "\n";
                     }
                     catch (Exception e)
                     {
@@ -57,37 +57,34 @@ namespace Decryptor
             return byteArray;
         }
 
-        string FromAes256(string cryptedText)
+        string fromAes256(string cryptedText)
         {
             /*!
 	            \brief Расшифровка строки aes256
                 \param cryptedText Зашифрованная строка
                 \return Расшифрованная строка
             */
-            byte[] cryptedByteArray = hexToBytes(cryptedText);
-            byte[] bytesIV = new byte[16];
-            byte[] mess = new byte[cryptedByteArray.Length - 16];
+            byte[] encrypted = hexToBytes(cryptedText);
+            byte[] IV = new byte[16];
             
-            for (int i = cryptedByteArray.Length - 16, j = 0; i < cryptedByteArray.Length; i++, j++)
-                bytesIV[j] = cryptedByteArray[i]; //Списываем соль
-            for (int i = 0; i < cryptedByteArray.Length - 16; i++)
-                mess[i] = cryptedByteArray[i]; //Списываем оставшуюся часть сообщения
+            for (int i = encrypted.Length - 16, j = 0; i < encrypted.Length; i++, j++)
+                IV[j] = encrypted[i];
+            Array.Resize(ref encrypted, encrypted.Length - 16);
 
             Aes aes = Aes.Create();
             aes.Key = aeskey;
-            aes.IV = bytesIV;
+            aes.IV = IV;
 
-            string text;
-            byte[] data = mess;
+            string decrypted;
             ICryptoTransform crypt = aes.CreateDecryptor(aes.Key, aes.IV);
-            using (MemoryStream ms = new MemoryStream(data))
+            using (MemoryStream ms = new MemoryStream(encrypted))
             using (CryptoStream cs = new CryptoStream(ms, crypt, CryptoStreamMode.Read))
             using (StreamReader sr = new StreamReader(cs))
-                text = sr.ReadToEnd();
-            return text;
+                decrypted = sr.ReadToEnd();
+            return decrypted;
         }
         
-        string GetText(string input)
+        string getText(string input)
         {
             /*!
 	            \brief Получение набранного текста из лога
@@ -143,13 +140,12 @@ namespace Decryptor
             }
         }
 
-        private void cleanButton_Click(object sender, EventArgs e)
+        private void clearButton_Click(object sender, EventArgs e)
         {
             /*!
 	            \brief Обработчик нажатия на кнопку очистки экрана
             */
-            textView.Text = string.Empty;
-            textView.Invalidate();
+            textView.Clear();
         }
 
         private void decryptButton_Click(object sender, EventArgs e)
@@ -157,7 +153,7 @@ namespace Decryptor
             /*!
 	            \brief Обработчик нажатия на кнопку дешифрования
             */
-            textView.Text = GetDecrypted(textView.Text);
+            textView.Text = getDecrypted(textView.Text);
             textView.Invalidate();
         }
 
@@ -166,7 +162,7 @@ namespace Decryptor
             /*!
 	            \brief Обработчик нажатия на кнопку получения набранного текста
             */
-            textView.Text = GetText(textView.Text);
+            textView.Text = getText(textView.Text);
             textView.Invalidate();
         }
 
@@ -175,7 +171,7 @@ namespace Decryptor
             /*!
 	            \brief Обработчик нажатия на кнопку дешифрования и получения набранного текста
             */
-            textView.Text = GetText(GetDecrypted(textView.Text));
+            textView.Text = getText(getDecrypted(textView.Text));
             textView.Invalidate();
         }
     }
